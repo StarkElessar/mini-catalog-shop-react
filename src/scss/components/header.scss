@@ -18,7 +18,7 @@
   &__logo {
     & span {
       @include adaptiv-font(28, 20);
-      font-weight: 800;
+      font-weight: 700;
       color: $firstAccentColor;
     }
   }
