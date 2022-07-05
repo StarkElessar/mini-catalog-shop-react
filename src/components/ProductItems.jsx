@@ -1,7 +1,10 @@
 import React from 'react'
+import ProductCard from './ProductCard'
 
 export default function ProductItems() {
   return (
-    <div>ProductItems</div>
+    <div className='catalog__wrapper'>
+      <ProductCard />
+    </div>
   )
 }
