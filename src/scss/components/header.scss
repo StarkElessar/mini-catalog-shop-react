@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 50;
   
   &__box {
     width: 100%;
@@ -11,7 +12,7 @@
     justify-content: space-between;
     position: relative;
     padding: 20px 0;
-    border-bottom: 2px solid rgba(#000, 3%);
+    border-bottom: 1px solid rgba(#000, 20%);
   }
 
   &__logo {
