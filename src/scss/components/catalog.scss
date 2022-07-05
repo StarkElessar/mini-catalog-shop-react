@@ -1,0 +1,12 @@
+.catalog {
+  padding-top: 40px;
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(1fr, auto);
+  }
+  &__title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 500;
+  }
+}
