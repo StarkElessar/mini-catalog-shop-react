@@ -14,11 +14,15 @@
   background-color: #f9f9fd;
 }
 /*------------------------------------------------------*/
+.root {
+  height: 100%;
+}
 .wrapper {
   min-height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding-top: 80px;
 }
 .page {
   flex: 1 1 auto;
