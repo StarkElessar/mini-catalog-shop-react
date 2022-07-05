@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Promo() {
+export default function SectionPromo() {
   return (
     <section className="page__promo promo">
       <div className="promo__container">
