@@ -26,5 +26,6 @@
 [class*="__container"] {
   max-width: 1140px + $mainOffset * 2;
   margin: 0 auto;
-  padding: 0 $mainOffset;
+  @include adaptive-value("padding-left", 30, 15, 2);
+  @include adaptive-value("padding-right", 30, 15, 2);
 }
