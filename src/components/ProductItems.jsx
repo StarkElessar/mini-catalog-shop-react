@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 
-export default function ProductItems({items}) {
+export default function ProductItems({items, onAdd}) {
   return (
     <div className='catalog__wrapper'>
       {
@@ -9,10 +9,8 @@ export default function ProductItems({items}) {
           return (
             <ProductCard
               key={item.id}
-              id={item.id}
-              imgUrl={item.imgUrl}
-              title={item.title}
-              price={item.price}
+              onAdd={onAdd}
+              item={item}
             />
           )
         })
