@@ -1,7 +1,7 @@
 import React from 'react'
 import Delivery from './Delivery'
 
-export default function ProductCard({ onAdd, item }) {
+export default function ProductCard({ onAdd, ...item }) {
   const fixedPrice = item.price.toFixed(2)
   const bonusCost = (item.price / 100).toFixed(2)
 
