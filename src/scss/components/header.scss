@@ -1,10 +1,7 @@
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 50;
-  
+
   &__box {
     width: 100%;
     display: flex;
@@ -16,36 +13,60 @@
   }
 
   &__logo {
-    & span {
-      @include adaptiv-font(28, 20);
-      font-weight: 700;
-      color: $firstAccentColor;
+    display: flex;
+    flex-direction: column;
+    &_title {
+      @include adaptiv-font(24, 18);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+      color: $fontColor;
+    }
+    &_desc {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #7b7b7b;
+      margin-top: 5px;
     }
   }
 }
 
 .cart {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
   cursor: pointer;
+  background: $firstAccentColor;
+  border-radius: 5px;
+  transition: $standartTrans;
+  &__cost {
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+  }
+  &__divider {
+    margin: 0 13px;
+    width: 1.5px;
+    height: 25px;
+    background: rgba(#fff, 25%);
+  }
   &__icon {
+    color: #fff;
     font-size: 28px;
-    transition: $standartTrans;
+    margin-right: 10px;
   }
   &__amount {
-    position: absolute;
-    top: 55%;
-    right: 50%;
-    transform: translateX(50%);
-    padding: 2px 6px;
+    color: #fff;
     line-height: 100%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: $lightBoxShadow;
+    font-weight: 700;
+    font-size: 16px;
   }
 
   &:hover {
-    .cart__icon {
-      color: darken($firstAccentColor, 10%);
-    }
+    background: darken($firstAccentColor, 5%);
+    box-shadow: $lightBoxShadow;
   }
 }
