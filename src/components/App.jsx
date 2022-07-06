@@ -1,71 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { connect } from 'react-redux'
+import React            from 'react'
+import axios            from 'axios'
+import { useDispatch }  from 'react-redux'
 
-import Footer from './Footer'
-import Header from './Header'
-import SectionPromo from './SectionPromo'
-import SectionCatalog from './SectionCatalog'
+import Footer           from './Footer'
+import Header           from './Header'
+import SectionPromo     from './SectionPromo'
+import SectionCatalog   from './SectionCatalog'
+import { setProducts }  from '../redux/actions/products'
 
-import store from '../redux/store'
-import { setProducts } from '../redux/actions/products'
+function App() {
+  const dispatch = useDispatch()
 
-// function App() {
-//   useEffect(() => {
-//     axios.get('http://localhost:3000/db.json')
-//       .then(({ data }) => setProducts(data.products))
-//   }, [])
-
-//   return (
-//     <div className='wrapper'>
-//       <Header />
-
-//       <main className='page'>
-//         <SectionPromo />
-//         <SectionCatalog
-//           productData={products}
-//         />
-//       </main>
-
-//       <Footer />
-//     </div>
-//   )
-// }
-
-class App extends React.Component {
-  componentDidMount() {
+  React.useEffect(() => {
     axios.get('http://localhost:3000/db.json')
-      .then(({ data }) => this.props.setProducts(data.products))
-  }
+      .then(({ data }) => dispatch(setProducts(data.products)))
+  }, [])
 
-  render() {
-    return (
-      <div className='wrapper'>
-        <Header />
 
-        <main className='page'>
-          <SectionPromo />
-          <SectionCatalog
-            productData={this.props.items}
-          />
-        </main>
+  return (
+    <div className='wrapper'>
+      <Header />
 
-        <Footer />
-      </div>
-    )
-  }
+      <main className='page'>
+        <SectionPromo />
+        <SectionCatalog />
+      </main>
+
+      <Footer />
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.products.items
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setProducts: (items) => dispatch(setProducts(items))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
