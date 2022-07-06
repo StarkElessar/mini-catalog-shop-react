@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductItems from './ProductItems'
 
-export default function SectionCatalog({productData, onAdd}) {
+export default function SectionCatalog({ productData, onAdd }) {
   return (
     <section className='page__catalog catalog'>
       <div className="catalog__container">
