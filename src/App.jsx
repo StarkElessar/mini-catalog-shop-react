@@ -87,8 +87,6 @@ function App() {
     setOrders({orders: [...orders, item]})
   }
 
-  console.log(orders);
-
 
   return (
     <div className="wrapper">
