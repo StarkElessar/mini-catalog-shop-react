@@ -22,7 +22,7 @@
     &:hover {
       box-shadow: $lightBoxShadow;
     }
-    &_active {
+    &.active {
       color: #fff;
       background-color: $fontColor;
     }
@@ -35,11 +35,21 @@
   position: relative;
   display: flex;
   align-items: center;
+  &:hover {
+    & .sort-by__icon {
+      color: $firstAccentColor;
+    }
+  }
   &__icon {
     position: relative;
-    top: 3px;
+    margin: auto 0;
+    transform: translateY(3px) translateX(-4px) rotateZ(0deg);
+
     font-size: 14px;
-    padding-right: 5px;
+    transition: $standartTrans;
+    &.active {
+      transform: translateY(-2px) translateX(-4px) rotateZ(180deg);
+    }
   }
   &__text {
     font-weight: 700;
@@ -57,6 +67,7 @@
     padding: 1px 0;
     border-bottom: 1px dashed;
     cursor: pointer;
+    
     &:hover {
       border-bottom: 1px dashed transparent;
     }
@@ -75,14 +86,17 @@
     &:hover {
       box-shadow: 0px 5px 15px rgba(#000, 25%);
     }
-    &_list {
-    }
     &_item {
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
       letter-spacing: 0.015em;
       padding: 10px 14px;
+      &.active {
+        color: $firstAccentColor;
+        font-weight: 500;
+        background: rgba(254, 95, 30, 0.05);
+      }
       &:hover {
         color: $firstAccentColor;
         background: rgba(254, 95, 30, 0.05);
