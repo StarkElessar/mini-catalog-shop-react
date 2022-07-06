@@ -5,6 +5,9 @@
     display: flex;
     flex-direction: column;
   }
+  &__nav-menu {
+    margin-bottom: 40px;
+  }
   &__title {
     text-align: center;
     font-size: 36px;
