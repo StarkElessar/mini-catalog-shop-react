@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import SectionPromo from "./components/SectionPromo"
 import SectionCatalog from "./components/SectionCatalog"
 
 function App() {
-  const [productData, setProductData] = useState([
+  const [orders, setOrders] = useState([])
+  const [products, setProducts] = useState([])
+  const productData = [
     {
       id: 159.984,
       imgUrl: 'https://7745.by/sites/default/files/imagecache/subcat_preview/uploads/zoomos/img/1185308_0.jpg.webp',
@@ -70,15 +72,34 @@ function App() {
       price: 1999.00,
       brand: 'lg'
     },
-  ])
+  ]
+  const url = 'http://localhost:3000/db.json'
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => {
+        setProducts(json.products)
+      })
+  }, [])
+
+  const addToOrder = (item) => {
+    setOrders({orders: [...orders, item]})
+  }
+
+  console.log(orders);
+
 
   return (
     <div className="wrapper">
-      <Header />
+      <Header orders={orders} />
 
       <main className="page">
         <SectionPromo />
-        <SectionCatalog productData={productData}/>
+        <SectionCatalog
+          productData={products}
+          onAdd={addToOrder}
+        />
       </main>
 
       <Footer />
