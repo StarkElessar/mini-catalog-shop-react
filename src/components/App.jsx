@@ -22,7 +22,6 @@ function App() {
       <Header />
 
       <main className='page'>
-        <SectionPromo />
         <SectionCatalog />
       </main>
 
