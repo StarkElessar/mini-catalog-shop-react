@@ -1,23 +1,29 @@
 import React from 'react'
-import { FaShippingFast } from 'react-icons/fa'
+import Delivery from './Delivery'
 
-export default function ProductCard(props) {
+export default function ProductCard({ onAdd, item }) {
+  const fixedPrice = item.price.toFixed(2)
+  const bonusCost = (item.price / 100).toFixed(2)
+
   return (
     <article className='catalog__item product-card'>
       <div className='product-card__article'>код
-        <span className='product-card__article_id'>{props.id}</span>
+        <span className='product-card__article_id'>{item.id}</span>
       </div>
+
       <div className="product-card__img">
-        <img src={props.imgUrl} alt="Product Image" />
-        <div className='product-card__delivery-type'>
-          <FaShippingFast className='product-card__delivery-type_icon' />
-          <span className='product-card__delivery-type_text'>Бесплатно по РБ</span>
-        </div>
+        <img src={item.imgUrl} alt="Product Image" />
+        {item.delivery && <Delivery />}
       </div>
-      <h4 className='product-card__title'>{props.title}</h4>
-      <span className='product-card__price'>{props.price.toFixed(2)} р.</span>
-      <span className='product-card__bonus'>Бонус {(props.price / 100).toFixed(2)} р.</span>
-      <button className="product-card__btn">В корзину</button>
+
+      <h4 className='product-card__title'>{item.title}</h4>
+      <span className='product-card__price'>{fixedPrice} р.</span>
+      <span className='product-card__bonus'>Бонус {bonusCost} р.</span>
+
+      <button
+        className="product-card__btn"
+        onClick={() => onAdd(item)}
+      >В корзину</button>
     </article>
   )
 }
