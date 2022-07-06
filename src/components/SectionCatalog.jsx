@@ -7,7 +7,7 @@ export default function SectionCatalog({ productData, onAdd }) {
       <div className="catalog__container">
         <h2 className='catalog__title'>Каталог товаров</h2>
 
-        <ProductItems items={productData} onAdd={onAdd}/>
+        <ProductItems items={productData}/>
       </div>
     </section>
   )

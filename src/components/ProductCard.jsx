@@ -1,7 +1,7 @@
 import React from 'react'
 import Delivery from './Delivery'
 
-export default function ProductCard({ onAdd, ...item }) {
+export default function ProductCard({ ...item }) {
   const fixedPrice = item.price.toFixed(2)
   const bonusCost = (item.price / 100).toFixed(2)
 
@@ -20,10 +20,7 @@ export default function ProductCard({ onAdd, ...item }) {
       <span className='product-card__price'>{fixedPrice} р.</span>
       <span className='product-card__bonus'>Бонус {bonusCost} р.</span>
 
-      <button
-        className="product-card__btn"
-        onClick={() => onAdd(item)}
-      >В корзину</button>
+      <button className="product-card__btn">В корзину</button>
     </article>
   )
 }
