@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import Footer from "./components/Footer"
-import Header from "./components/Header"
-import SectionPromo from "./components/SectionPromo"
-import SectionCatalog from "./components/SectionCatalog"
+import Footer from "./Footer"
+import Header from "./Header"
+import SectionPromo from "./SectionPromo"
+import SectionCatalog from "./SectionCatalog"
 import axios from "axios"
 
 function App() {
