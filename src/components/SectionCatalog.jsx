@@ -1,12 +1,18 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setCategory, setSortBy } from '../redux/actions/filters'
+import { fetchProducts }  from '../redux/actions/products'
 
 import NavMenu from './NavMenu'
 import ProductItems from './ProductItems'
 
 const SectionCatalog = React.memo(() => {
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(fetchProducts())
+  }, [])
+
   const dispatchSetCategory = React.useCallback((brand) => {
     dispatch(setCategory(brand))
   }, [])
