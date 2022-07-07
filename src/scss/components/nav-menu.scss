@@ -46,9 +46,9 @@
     transform: translateY(3px) translateX(-4px) rotateZ(0deg);
 
     font-size: 14px;
-    transition: $standartTrans;
+    transition: transform 400ms;
     &.active {
-      transform: translateY(-2px) translateX(-4px) rotateZ(180deg);
+      transform: translateY(-3px) translateX(-4px) rotateZ(180deg);
     }
   }
   &__text {
