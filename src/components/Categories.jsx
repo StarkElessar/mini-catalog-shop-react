@@ -19,7 +19,7 @@ const categoryTags = [
   },
 ]
 
-const Categories = React.memo(function Categories({ onClickCategory }) {
+const Categories = React.memo(({ onClickCategory }) => {
   const [activeTag, setActiveTag] = React.useState('все')
 
   const onSelectTag = (brand, name) => {

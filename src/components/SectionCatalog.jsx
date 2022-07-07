@@ -5,7 +5,7 @@ import { setCategory, setSortBy } from '../redux/actions/filters'
 import NavMenu from './NavMenu'
 import ProductItems from './ProductItems'
 
-export default function SectionCatalog() {
+const SectionCatalog = React.memo(() => {
   const dispatch = useDispatch()
   const dispatchSetCategory = React.useCallback((brand) => {
     dispatch(setCategory(brand))
@@ -25,4 +25,6 @@ export default function SectionCatalog() {
       </div>
     </section>
   )
-}
+})
+
+export default SectionCatalog

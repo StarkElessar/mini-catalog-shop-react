@@ -1,7 +1,7 @@
 import React from 'react'
 import Delivery from './Delivery'
 
-export default function ProductCard({ ...item }) {
+const ProductCard = React.memo(({ ...item }) => {
   const fixedPrice = item.price.toFixed(2)
   const bonusCost = (item.price / 100).toFixed(2)
 
@@ -23,4 +23,6 @@ export default function ProductCard({ ...item }) {
       <button className="product-card__btn">В корзину</button>
     </article>
   )
-}
+})
+
+export default ProductCard

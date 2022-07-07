@@ -16,7 +16,7 @@ const sortTags = [
   },
 ]
 
-const SortBy = React.memo(function SortBy({ onClickSortBy }) {
+const SortBy = React.memo(({ onClickSortBy }) => {
   const [activeSortByTag, setActiveSortByTag] = React.useState('популярности')
   const [isVisiblePopup, setIsVisiblePopup] = React.useState(false)
   const sortByRef = React.useRef(null)

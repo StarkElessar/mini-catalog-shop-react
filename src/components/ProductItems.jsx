@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import ProductCard from './ProductCard'
 
-export default function ProductItems() {
+const ProductItems = React.memo(() => {
   const { items } = useSelector(({ products }) => ({ items: products.items }))
 
   return (
@@ -11,4 +11,6 @@ export default function ProductItems() {
       { items && items.map((item) => (<ProductCard key={item.id} {...item} /> )) }
     </div>
   )
-}
+})
+
+export default ProductItems
