@@ -8,16 +8,7 @@ export default function ProductItems() {
 
   return (
     <div className='catalog__wrapper'>
-      {
-        items && items.map((item) => {
-          return (
-            <ProductCard
-              key={item.id}
-              {...item}
-            />
-          )
-        })
-      }
+      { items && items.map((item) => (<ProductCard key={item.id} {...item} /> )) }
     </div>
   )
 }
