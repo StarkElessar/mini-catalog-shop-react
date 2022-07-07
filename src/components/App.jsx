@@ -4,7 +4,6 @@ import { useDispatch }  from 'react-redux'
 
 import Footer           from './Footer'
 import Header           from './Header'
-import SectionPromo     from './SectionPromo'
 import SectionCatalog   from './SectionCatalog'
 import { setProducts }  from '../redux/actions/products'
 
