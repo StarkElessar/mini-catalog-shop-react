@@ -31,10 +31,10 @@ export default function NavMenu({ tags, sortByTags }) {
           })
         }
       </ul>
-      <div ref={sortByRef} onClick={setIsVisible} className="nav-menu__sort-by sort-by">
+      <div ref={sortByRef} className="nav-menu__sort-by sort-by">
         <FaSortUp className={isVisiblePopup ? 'sort-by__icon active' : 'sort-by__icon'} />
         <span className='sort-by__text'>Сортировка по:</span>
-        <span className='sort-by__tag'>{activeSortByTag}</span>
+        <span className='sort-by__tag' onClick={setIsVisible}>{activeSortByTag}</span>
         {
           isVisiblePopup && (
             <div className="sort-by__popup">
