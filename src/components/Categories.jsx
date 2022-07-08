@@ -1,42 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategories } from '../redux/actions/filters'
 
-const categoryTags = [
-  {
-    brand: 'all',
-    name: 'все',
-  },
-  {
-    brand: 'beko',
-    name: 'beko',
-  },
-  {
-    brand: 'schaub',
-    name: 'schaub',
-  },
-  {
-    brand: 'lg',
-    name: 'lg',
-  },
-]
+const Categories = React.memo(({ activeCategory, onClickCategory }) => {
+  const dispatch = useDispatch()
+  const { allCategories } = useSelector(({ filters }) => filters)
 
-const Categories = React.memo(({ onClickCategory }) => {
-  const [activeTag, setActiveTag] = React.useState('все')
-
-  const onSelectTag = (brand, name) => {
-    setActiveTag(name)
-    onClickCategory(brand)
-  }
-
+  React.useEffect(() => {
+    dispatch(fetchCategories())
+  }, [])
+  
   return (
     <ul className='nav-menu__list'>
       {
-        categoryTags.map(({ brand, name }) => {
-          const setItemClassNames = activeTag === name ? 'nav-menu__item active' : 'nav-menu__item'
+        allCategories.map(({ brand, name }) => {
+          const setItemClassNames = activeCategory.brand === brand ? 'nav-menu__item active' : 'nav-menu__item'
 
           return (
             <li
               key={brand}
-              onClick={() => onSelectTag(brand, name)}
+              onClick={() => onClickCategory(brand, name)}
               className={setItemClassNames}
             >
               {name}
