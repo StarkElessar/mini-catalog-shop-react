@@ -1,6 +1,7 @@
 import React from 'react'
 import Delivery from './Delivery'
 
+
 const ProductCard = React.memo(({ ...item }) => {
   const fixedPrice = item.price.toFixed(2)
   const bonusCost = (item.price / 100).toFixed(2)
