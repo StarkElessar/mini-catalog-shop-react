@@ -1,6 +1,8 @@
 const initialState = {
-  category: 'all',
-  sortBy: 'popular'
+  category: { brand: 'all', name: 'все' },
+  sortBy: { type: 'popular', name: 'популярности' },
+  allCategories: [],
+  allSorting: [],
 }
 
 const filters = (state = initialState, action) => {
@@ -14,6 +16,16 @@ const filters = (state = initialState, action) => {
       return {
         ...state,
         category: action.payload
+      }
+    case 'GET_ALL_CATEGORIES':
+      return {
+        ...state,
+        allCategories: action.payload
+      }
+    case 'GET_ALL_SORTING':
+      return {
+        ...state,
+        allSorting: action.payload
       }
     default:
       return state
