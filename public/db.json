@@ -64,5 +64,37 @@
     "price": 1999.00,
     "brand": "lg"
     }
+  ],
+  "sorting": [
+    {
+      "type": "popular",
+      "name": "популярности"
+    },
+    {
+      "type": "price",
+      "name": "цене"
+    },
+    {
+      "type": "alphabet",
+      "name": "алфавиту"
+    }
+  ],
+  "categories": [
+    {
+      "brand": "all",
+      "name": "все"
+    },
+    {
+      "brand": "beko",
+      "name": "beko"
+    },
+    {
+      "brand": "schaub",
+      "name": "schaub"
+    },
+    {
+      "brand": "lg",
+      "name": "lg"
+    }
   ]
 }
