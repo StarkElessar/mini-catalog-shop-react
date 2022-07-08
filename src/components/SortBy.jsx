@@ -1,54 +1,41 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchSorting } from '../redux/actions/filters'
 import { FaSortUp } from 'react-icons/fa'
 
-const sortTags = [
-  {
-    type: 'popular',
-    name: 'популярности',
-  },
-  {
-    type: 'price',
-    name: 'цене',
-  },
-  {
-    type: 'alphabet',
-    name: 'алфавиту',
-  },
-]
 
-const SortBy = React.memo(({ onClickSortBy }) => {
-  const [activeSortByTag, setActiveSortByTag] = React.useState('популярности')
+const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
+  const dispatch = useDispatch()
+  const { allSorting } = useSelector(({ filters }) => filters)
   const [isVisiblePopup, setIsVisiblePopup] = React.useState(false)
   const sortByRef = React.useRef(null)
 
-  const onSelectSortByTag = (type, name) => {
-    setActiveSortByTag(name)
-    onClickSortBy(type)
-  }
   const setIsVisible = () => setIsVisiblePopup(!isVisiblePopup)
   const handleOutsideClick = (e) => !e.path.includes(sortByRef.current) && setIsVisiblePopup(false)
+  const popupClassNames = isVisiblePopup ? 'sort-by__icon active' : 'sort-by__icon'
 
   React.useEffect(() => {
+    dispatch(fetchSorting())
     document.body.addEventListener('click', handleOutsideClick)
   }, [])
 
   return (
     <div ref={sortByRef} className="nav-menu__sort-by sort-by">
-      <FaSortUp className={isVisiblePopup ? 'sort-by__icon active' : 'sort-by__icon'} />
+      <FaSortUp className={popupClassNames} />
       <span className='sort-by__text'>Сортировка по:</span>
-      <span className='sort-by__tag' onClick={setIsVisible}>{activeSortByTag}</span>
+      <span className='sort-by__tag' onClick={setIsVisible}>{activeSortBy.name}</span>
       {
         isVisiblePopup && (
           <div className="sort-by__popup">
             <ul className="sort-by__popup_list">
               {
-                sortTags.map(({ type, name }) => {
-                  const setItemClassNames = activeSortByTag === name ? 'sort-by__popup_item active' : 'sort-by__popup_item'
+                allSorting.map(({ type, name }) => {
+                  const setItemClassNames = activeSortBy.type === type ? 'sort-by__popup_item active' : 'sort-by__popup_item'
 
                   return (
                     <li
                       key={type}
-                      onClick={() => onSelectSortByTag(type, name)}
+                      onClick={() => onClickSortBy(type, name)}
                       className={setItemClassNames}
                     >
                       {name}
