@@ -17,8 +17,8 @@ const Catalog = React.memo(() => {
   const dispatchSetCategory = React.useCallback((brand, name) => {
     dispatch(setCategory(brand, name))
   }, [])
-  const dispatchSetSortBy = React.useCallback((type, name) => {
-    dispatch(setSortBy(type, name))
+  const dispatchSetSortBy = React.useCallback((path, tag, type) => {
+    dispatch(setSortBy(path, tag, type))
   }, [])
 
   return (
