@@ -26,7 +26,7 @@ export const setCategory = (brand, name) => ({
   payload: { brand, name },
 })
 
-export const setSortBy = (type, name) => ({
+export const setSortBy = (path, tag, type) => ({
   type: 'SET_SORT_BY',
-  payload: { type, name }
+  payload: { path, tag, type }
 })
