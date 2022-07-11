@@ -11,9 +11,11 @@ const ProductItems = React.memo(() => {
   return (
     <div className='catalog__wrapper'>
       {
-        isLoaded 
-          ? items.map((item) => <ProductCard key={item.id} {...item} />)
-          : Array(8).fill(0).map((_,index) => <CardSkeleton key={index} />)
+        (isLoaded ? items : [...Array(8)]).map((item, index) => (
+          isLoaded
+            ? <ProductCard key={item.id} {...item} />
+            : <CardSkeleton key={index} isLoaded={false} />
+        ))
       }
     </div>
   )
