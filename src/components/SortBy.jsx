@@ -23,22 +23,26 @@ const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
     <div ref={sortByRef} className="nav-menu__sort-by sort-by">
       <FaSortUp className={popupClassNames} />
       <span className='sort-by__text'>Сортировка по:</span>
-      <span className='sort-by__tag' onClick={setIsVisible}>{activeSortBy.name}</span>
+      <span className='sort-by__tag' onClick={setIsVisible}>{activeSortBy.tag}</span>
       {
         isVisiblePopup && (
           <div className="sort-by__popup">
             <ul className="sort-by__popup_list">
               {
-                allSorting.map(({ type, name }) => {
-                  const setItemClassNames = activeSortBy.type === type ? 'sort-by__popup_item active' : 'sort-by__popup_item'
-
+                allSorting.map(({ path, tag, type }) => {
+                  const setItemClassNames = activeSortBy.tag === tag ? 'sort-by__popup_item active' : 'sort-by__popup_item'
+                  const handleClickSortBy = () => {
+                    onClickSortBy(path, tag, type)
+                    setIsVisiblePopup(!isVisiblePopup)
+                  }
+                  
                   return (
                     <li
-                      key={type}
-                      onClick={() => onClickSortBy(type, name)}
+                      key={`${path}_${type}`}
+                      onClick={handleClickSortBy}
                       className={setItemClassNames}
                     >
-                      {name}
+                      {tag}
                     </li>
                   )
                 })
