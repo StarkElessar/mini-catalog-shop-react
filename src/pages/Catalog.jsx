@@ -11,7 +11,7 @@ const Catalog = React.memo(() => {
   const { category, sortBy } = useSelector(({ filters }) => filters)
   
   React.useEffect(() => {
-    dispatch(fetchProducts())
+    dispatch(fetchProducts(category, sortBy))
   }, [category, sortBy])
 
   const dispatchSetCategory = React.useCallback((brand, name) => {
