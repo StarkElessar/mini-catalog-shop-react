@@ -71,24 +71,74 @@
     "price": 1999.00,
     "brand": "lg",
     "rating": 5
+    },
+    {
+    "id": 489.685,
+    "imgUrl": "https://7745.by/sites/default/files/imagecache/subcat_preview/uploads/zoomos/img/1934422_0.jpg.webp",
+    "delivery": true,
+    "title": "Стиральная машина SIEMENS WH22A2W0BL iQ300",
+    "price": 1899.00,
+    "brand": "siemens",
+    "rating": 4.6
+    },
+    {
+    "id": 395.644,
+    "imgUrl": "https://7745.by/sites/default/files/imagecache/subcat_preview/uploads/zoomos/img/1400010_0.jpg.webp",
+    "delivery": true,
+    "title": "Стиральная машина LG F2J5HS6W",
+    "price": 2335.64,
+    "brand": "lg",
+    "rating": 4.1
+    },
+    {
+    "id": 776.478,
+    "imgUrl": "https://7745.by/sites/default/files/imagecache/subcat_preview/uploads/products/685184/F1296WDS0%20(2).jpg.webp",
+    "delivery": true,
+    "title": "Стиральная машина LG F1296WDS0",
+    "price": 1567.59,
+    "brand": "lg",
+    "rating": 3.8
+    },
+    {
+    "id": 776.477,
+    "imgUrl": "https://7745.by/sites/default/files/imagecache/subcat_preview/uploads/products/685183/%2070%D0%A1105-00%20(1).jpg.webp",
+    "delivery": true,
+    "title": "Стиральная машина ATLANT СМА 70С105-00",
+    "price": 968.24,
+    "brand": "atlant",
+    "rating": 1.6
     }
   ],
   "sorting": [
     {
-      "type": "popular",
-      "name": "популярности"
+      "path": "rating",
+      "tag": "популярности",
+      "type": "desc"
     },
     {
-      "type": "price",
-      "name": "цене"
+      "path": "price",
+      "tag": "дорогим",
+      "type": "desc"
     },
     {
-      "type": "title",
-      "name": "алфавиту"
+      "path": "price",
+      "tag": "дешевым",
+      "type": "asc"
     },
     {
-      "type": "delivery",
-      "name": "доставке"
+      "path": "title",
+      "tag": "алфавиту А-Я",
+      "type": "asc"
+    },
+    {
+      "path": "title",
+      "tag": "алфавиту Я-А",
+      "type": "desc"
+    },
+    {
+      "path": "delivery",
+      "tag": "доставке",
+      "type": "desc"
     }
   ],
   "categories": [
@@ -107,6 +157,14 @@
     {
       "brand": "lg",
       "name": "lg"
+    },
+    {
+      "brand": "atlant",
+      "name": "атлант"
+    },
+    {
+      "brand": "siemens",
+      "name": "siemens"
     }
   ]
 }
