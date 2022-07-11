@@ -6,15 +6,11 @@ export const setLoaded = (payload) => ({
 })
 
 export const fetchProducts = (category, sortBy) => (dispatch) => {
-  console.log(category.brand, sortBy.type)
-  const activeTag = category.brand === 'all' ? '' : `brand=${category.brand}`
-  
-  
+  const activeCategoryTag = category.brand === 'all' ? '' : `brand=${category.brand}`
   
   dispatch(setLoaded(false))
-  axios.get(`http://localhost:3004/products?${activeTag}&_sort=${sortBy.type}&_order=desc`).then(({ data }) => {
-    dispatch(setProducts(data))
-  })
+  axios.get(`http://localhost:3004/products?${activeCategoryTag}&_sort=${sortBy.path}&_order=${sortBy.type}`)
+    .then(({ data }) => dispatch(setProducts(data)))
 }
 
 export const setProducts = (items) => ({
