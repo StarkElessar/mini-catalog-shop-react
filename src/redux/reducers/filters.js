@@ -1,6 +1,6 @@
 const initialState = {
   category: { brand: 'all', name: 'все' },
-  sortBy: { type: 'rating', name: 'популярности' },
+  sortBy: { path: 'rating', tag: 'популярности', type: 'desc' },
   allCategories: [],
   allSorting: [],
 }
