@@ -11,7 +11,10 @@ const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
   const sortByRef = React.useRef(null)
 
   const setIsVisible = () => setIsVisiblePopup(!isVisiblePopup)
-  const handleOutsideClick = (e) => !e.path.includes(sortByRef.current) && setIsVisiblePopup(false)
+  const handleOutsideClick = (e) => {
+    const path = e.path || (e.composedPath && e.composedPath())
+    !path.includes(sortByRef.current) && setIsVisiblePopup(false)
+  }
   const popupClassNames = isVisiblePopup ? 'sort-by__icon active' : 'sort-by__icon'
 
   React.useEffect(() => {
