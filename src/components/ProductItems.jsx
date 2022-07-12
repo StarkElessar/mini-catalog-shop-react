@@ -1,19 +1,29 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addProductToCart } from '../redux/actions/cart'
 
 import ProductCard from './ProductCard'
 import CardSkeleton from './CardSkeleton'
 
 const ProductItems = React.memo(() => {
-  const items = useSelector(({ products }) => products.items)
-  const isLoaded = useSelector(({ products }) => products.isLoaded)
+  const dispatch = useDispatch()
+  const { items, isLoaded } = useSelector(({ products }) => products)
+
+  const dispatchAddItemToCart = React.useCallback((productObject) => {
+    dispatch(addProductToCart(productObject))
+  })
 
   return (
     <div className='catalog__wrapper'>
       {
-        (isLoaded ? items : [...Array(8)]).map((item, index) => (
+        (isLoaded ? items : [...Array(8)]).map((objectCard, index) => (
           isLoaded
-            ? <ProductCard key={item.id} {...item} />
+            ? <ProductCard
+                key={objectCard.id}
+                onClickAddToCart={dispatchAddItemToCart}
+                {...objectCard}
+              />
+            
             : <CardSkeleton key={index} isLoaded={false} />
         ))
       }
