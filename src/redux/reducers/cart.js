@@ -24,8 +24,9 @@ const cart = (state = initialState, action) => {
           : [...state.items[action.payload.id].items, action.payload]
       }
       // все товары обьеденённые в один массив:
+      // (или: Object.values(newItems).flat())
       const mergedArray = [].concat.apply([], Object.values(newItems))
-      const totalPrice = mergedArray.reduce((total, {price}) => total + price, 0)
+      const totalPrice = (mergedArray.reduce((total, {price}) => total + price, 0)).toFixed(2)
 
       return {
         ...state,
