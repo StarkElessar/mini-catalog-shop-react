@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCategory, setSortBy } from '../redux/actions/filters'
-import { fetchProducts }  from '../redux/actions/products'
+import { fetchProducts } from '../redux/actions/products'
 
 import NavMenu from '../components/NavMenu'
 import ProductItems from '../components/ProductItems'
@@ -9,7 +9,7 @@ import ProductItems from '../components/ProductItems'
 const Catalog = React.memo(() => {
   const dispatch = useDispatch()
   const { category, sortBy } = useSelector(({ filters }) => filters)
-  
+
   React.useEffect(() => {
     dispatch(fetchProducts(category, sortBy))
   }, [category, sortBy])
