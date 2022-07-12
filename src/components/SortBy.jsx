@@ -20,7 +20,7 @@ const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
   React.useEffect(() => {
     dispatch(fetchSorting())
     document.body.addEventListener('click', handleOutsideClick)
-  }, [])
+  }, [dispatch])
 
   return (
     <div ref={sortByRef} className="nav-menu__sort-by sort-by">

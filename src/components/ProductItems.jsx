@@ -11,7 +11,7 @@ const ProductItems = React.memo(() => {
 
   const dispatchAddItemToCart = React.useCallback((productObject) => {
     dispatch(addProductToCart(productObject))
-  })
+  }, [dispatch])
 
   return (
     <div className='catalog__wrapper'>

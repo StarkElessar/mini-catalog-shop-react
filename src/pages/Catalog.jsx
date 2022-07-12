@@ -12,14 +12,14 @@ const Catalog = React.memo(() => {
 
   React.useEffect(() => {
     dispatch(fetchProducts(category, sortBy))
-  }, [category, sortBy])
+  }, [category, sortBy, dispatch])
 
   const dispatchSetCategory = React.useCallback((brand, name) => {
     dispatch(setCategory(brand, name))
-  }, [])
+  }, [dispatch])
   const dispatchSetSortBy = React.useCallback((path, tag, type) => {
     dispatch(setSortBy(path, tag, type))
-  }, [])
+  }, [dispatch])
 
   return (
     <section className='page__catalog catalog'>
