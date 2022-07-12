@@ -7,7 +7,7 @@ import CartItem from "../components/CartItem";
 
 export default function Cart() {
   const { items, totalCount, totalPrice } = useSelector(({ cart }) => cart)
-  const productArray = [].concat.apply([], Object.values(items))
+  const productArray = Object.values(items).flat()
 
   return (
     <section className="page__cart cart">
@@ -26,19 +26,23 @@ export default function Cart() {
         <div className="cart__body cart-body">
           <div className="cart-body__items">
             {
-              productArray.map((objectProduct, index) => {
-                return (
-                  <CartItem key={`${objectProduct.id}_${index}`} {...objectProduct}/>
-                )
-              })
+              productArray.map((objectProduct, index) => (
+                <CartItem key={`${objectProduct.id}_${index}`} {...objectProduct}/>
+              ))
             }
           </div>
           <div className="cart-body__footer">
             <div className="cart-body__total-count">
-              Всего товаров: <span className="cart-body__total-count_number">{totalCount} шт.</span>
+              Всего товаров:
+              <span className="cart-body__total-count_number">
+                {totalCount} шт.
+              </span>
             </div>
             <div className="cart-body__total-price">
-              Сумма заказа: <span className="cart-body__total-price_number">{totalPrice} Br</span>
+              Сумма заказа:
+              <span className="cart-body__total-price_number">
+                {totalPrice} Br
+              </span>
             </div>
           </div>
         </div>
