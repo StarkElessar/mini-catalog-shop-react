@@ -9,7 +9,7 @@ export const fetchProducts = (category, sortBy) => (dispatch) => {
   const activeCategoryTag = category.brand === 'all' ? '' : `brand=${category.brand}`
   
   dispatch(setLoaded(false))
-  axios.get(`http://localhost:3004/products?${activeCategoryTag}&_sort=${sortBy.path}&_order=${sortBy.type}`)
+  axios.get(`/products?${activeCategoryTag}&_sort=${sortBy.path}&_order=${sortBy.type}`)
     .then(({ data }) => dispatch(setProducts(data)))
 }
 
