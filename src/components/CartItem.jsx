@@ -5,12 +5,12 @@ import {
   FaRegMinusSquare
 } from "react-icons/fa"
 
-function CartItem({ id, title, brand, price, imgUrl }) {
+const CartItem = React.memo(({ id, title, brand, price, imgUrl }) => {
 
   return (
     <article className="cart-body__item cart-item">
       <div className="cart-item__img">
-        <img src={imgUrl} />
+        <img src={imgUrl} alt='Washing Machine'/>
       </div>
       <div className="cart-item__text">
         <span className="cart-item__text_id">код товара {id}</span>
@@ -34,6 +34,6 @@ function CartItem({ id, title, brand, price, imgUrl }) {
       </div>
     </article>
   )
-}
+})
 
 export default CartItem

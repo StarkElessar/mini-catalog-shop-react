@@ -16,7 +16,7 @@ const ProductCard = React.memo(({ ...objectCard }) => {
       </div>
 
       <div className="product-card__img">
-        <img src={imgUrl} alt="Product Image" />
+        <img src={imgUrl} alt='Washing Machine'/>
         {delivery && <Delivery />}
       </div>
 
