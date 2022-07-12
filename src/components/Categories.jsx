@@ -15,11 +15,12 @@ const Categories = React.memo(({ activeCategory, onClickCategory }) => {
       {
         allCategories.map(({ brand, name }) => {
           const setItemClassNames = activeCategory.brand === brand ? 'nav-menu__item active' : 'nav-menu__item'
+          const handleClickCategory = () => onClickCategory(brand, name)
 
           return (
             <li
               key={brand}
-              onClick={() => onClickCategory(brand, name)}
+              onClick={handleClickCategory}
               className={setItemClassNames}
             >
               {name}
