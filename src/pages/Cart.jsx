@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaAngleLeft, FaShoppingBasket, FaTrashAlt } from "react-icons/fa"
-import { clearCart } from '../redux/actions/cart'
+import { clearCart, removeCartItem, decreaseCountItems, increaseCountItems } from '../redux/actions/cart'
 
 import CartEmpty from "../components/CartEmpty";
 import CartItem from "../components/CartItem";
@@ -18,6 +18,19 @@ export default function Cart() {
     if (window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart())
     }
+  }, [dispatch])
+
+  const dispatchRemoveCartItem = React.useCallback((id) => {
+    if (window.confirm('Вы действительно хотите удалить данный товар из корзины?')) {
+      dispatch(removeCartItem(id))
+    }
+  }, [dispatch])
+
+  const dispatchDecCountItems = React.useCallback((id) => {
+    dispatch(decreaseCountItems(id))
+  }, [dispatch])
+  const dispatchIncCountItems = React.useCallback((id) => {
+    dispatch(increaseCountItems(id))
   }, [dispatch])
 
   return (
@@ -45,6 +58,9 @@ export default function Cart() {
                         key={`${objectProduct.id}_${index}`}
                         currentTotalCount={currentTotalCount[index]}
                         currentTotalPrice={currentTotalPrice[index]}
+                        removeCurrentItem={dispatchRemoveCartItem}
+                        incCartItem={dispatchIncCountItems}
+                        decCartItem={dispatchDecCountItems}
                         {...objectProduct}
                       />
                     ))
