@@ -68,11 +68,13 @@
     }
     &__total-count {
       &_number {
+        padding-left: 5px;
         font-weight: 700;
       }
     }
     &__total-price {
       &_number {
+        padding-left: 5px;
         font-weight: 700;
         color: $firstAccentColor;
       }
