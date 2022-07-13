@@ -8,13 +8,13 @@ import Cart from '../pages/Cart'
 
 export const App = () => (
   <div className='wrapper'>
-    <Header />
+    <Header/>
     <main className='page'>
       <Routes>
-        <Route exact path='/' element={<Catalog/>} />
-        <Route exact path='/cart' element={<Cart/>} />
+        <Route exact path='/' element={<Catalog />} />
+        <Route exact path='/cart' element={<Cart />} />
       </Routes>
     </main>
-    <Footer />
+    <Footer/>
   </div>
 )
