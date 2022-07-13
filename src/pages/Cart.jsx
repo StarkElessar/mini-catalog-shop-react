@@ -23,7 +23,7 @@ export default function Cart() {
   return (
     <section className="page__cart cart">
       {
-        totalCount == 0
+        totalCount === 0
           ? <CartEmpty />
           : (<div className="cart__container">
               <div className="cart__header">
