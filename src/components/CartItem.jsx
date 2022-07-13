@@ -5,7 +5,7 @@ import {
   FaRegMinusSquare
 } from "react-icons/fa"
 
-const CartItem = React.memo(({ id, title, brand, price, imgUrl }) => {
+const CartItem = React.memo(({ id, title, brand, imgUrl, currentTotalCount, currentTotalPrice }) => {
 
   return (
     <article className="cart-body__item cart-item">
@@ -21,13 +21,13 @@ const CartItem = React.memo(({ id, title, brand, price, imgUrl }) => {
         <div className="block-counter__btn">
           <FaRegMinusSquare />
         </div>
-        <div className="block-counter__number">1</div>
+        <div className="block-counter__number">{currentTotalCount}</div>
         <div className="block-counter__btn">
           <FaRegPlusSquare />
         </div>
       </div>
       <div className="cart-item__price">
-        <span>{price} Br</span>
+        <span>{currentTotalPrice} Br</span>
       </div>
       <div className="cart-item__delete">
         <FaRegTimesCircle />
