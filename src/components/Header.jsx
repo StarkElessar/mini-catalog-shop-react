@@ -7,7 +7,7 @@ const Header = React.memo(() => (
   <header className="header">
     <div className="header__container">
       <div className="header__box">
-        <Logo/>
+        <Logo />
         <ButtonCart/>
       </div>
     </div>
