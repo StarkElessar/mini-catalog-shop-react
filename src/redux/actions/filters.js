@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 export const fetchCategories = () => (dispatch) => {
-  axios.get('http://localhost:3004/categories').then(({ data }) => {
+  axios.get('/categories').then(({ data }) => {
     dispatch(getCategory(data))
   })
 }
 export const fetchSorting = () => (dispatch) => {
-  axios.get('http://localhost:3004/sorting').then(({ data }) => {
+  axios.get('/sorting').then(({ data }) => {
     dispatch(getSorting(data))
   })
 }
