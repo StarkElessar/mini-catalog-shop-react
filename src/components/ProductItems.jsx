@@ -16,7 +16,7 @@ const ProductItems = React.memo(() => {
   return (
     <div className='catalog__wrapper'>
       {
-        (isLoaded ? items : [...Array(8)]).map((objectCard, index) => (
+        (isLoaded ? items : [...Array(4)]).map((objectCard, index) => (
           isLoaded
             ? <ProductCard
                 key={objectCard.id}
