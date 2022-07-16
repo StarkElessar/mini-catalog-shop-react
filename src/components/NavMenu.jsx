@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import Categories from './Categories'
 import SortBy from './SortBy'
 
-const NavMenu = React.memo(({ activeCategory, onClickCategory, activeSortBy, onClickSortBy }) => (
+const NavMenu = ({ activeCategory, onClickCategory, activeSortBy, onClickSortBy }) => (
   <nav className='catalog__nav-menu nav-menu'>
     <Categories activeCategory={activeCategory} onClickCategory={onClickCategory} />
     <SortBy activeSortBy={activeSortBy} onClickSortBy={onClickSortBy} />
   </nav>
-))
+)
 
-export default NavMenu
+export default memo(NavMenu)

@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCategories } from '../redux/actions/filters'
 
-const Categories = React.memo(({ activeCategory, onClickCategory }) => {
+const Categories = ({ activeCategory, onClickCategory }) => {
   const dispatch = useDispatch()
   const { allCategories } = useSelector(({ filters }) => filters)
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchCategories())
-  }, [])
+  }, [dispatch])
   
   return (
     <ul className='nav-menu__list'>
       {
         allCategories.map(({ brand, name }) => {
-          const setItemClassNames = activeCategory.brand === brand ? 'nav-menu__item active' : 'nav-menu__item'
+          const setItemClassNames = activeCategory.brand === brand
+            ? 'nav-menu__item active'
+            : 'nav-menu__item'
+          
           const handleClickCategory = () => onClickCategory(brand, name)
 
           return (
@@ -30,6 +33,6 @@ const Categories = React.memo(({ activeCategory, onClickCategory }) => {
       }
     </ul>
   )
-})
+}
 
-export default Categories
+export default memo(Categories)

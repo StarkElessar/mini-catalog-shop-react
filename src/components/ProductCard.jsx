@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Delivery from './Delivery'
 
 
-const ProductCard = React.memo(({ ...objectCard }) => {
-  const {id, title, price, imgUrl, brand, delivery,onClickAddToCart} = {...objectCard}
+const ProductCard = ({ ...objectCard }) => {
+  const {id, title, price, imgUrl, brand, delivery, onClickAddToCart} = {...objectCard}
   const fixedPrice = price.toFixed(2)
   const bonusCost = (price / 100).toFixed(2)
 
@@ -32,6 +32,6 @@ const ProductCard = React.memo(({ ...objectCard }) => {
       </button>
     </article>
   )
-})
+}
 
-export default ProductCard
+export default memo(ProductCard)

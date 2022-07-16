@@ -3,15 +3,15 @@ import React from 'react'
 import Logo from './Logo'
 import ButtonCart from './ButtonCart'
 
-const Header = React.memo(() => (
+const Header = () => (
   <header className="header">
     <div className="header__container">
       <div className="header__box">
         <Logo />
-        <ButtonCart/>
+        <ButtonCart />
       </div>
     </div>
   </header>
-))
+)
 
 export default Header

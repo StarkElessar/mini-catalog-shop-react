@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSorting } from '../redux/actions/filters'
 import { FaSortUp } from 'react-icons/fa'
 
 
-const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
+const SortBy = ({ activeSortBy, onClickSortBy }) => {
   const dispatch = useDispatch()
   const { allSorting } = useSelector(({ filters }) => filters)
-  const [isVisiblePopup, setIsVisiblePopup] = React.useState(false)
-  const sortByRef = React.useRef(null)
+  const [isVisiblePopup, setIsVisiblePopup] = useState(false)
+  const sortByRef = useRef(null)
 
   const setIsVisible = () => setIsVisiblePopup(!isVisiblePopup)
+
   const handleOutsideClick = (e) => {
     const path = e.path || (e.composedPath && e.composedPath())
+
     !path.includes(sortByRef.current) && setIsVisiblePopup(false)
   }
+
   const popupClassNames = isVisiblePopup ? 'sort-by__icon active' : 'sort-by__icon'
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchSorting())
     document.body.addEventListener('click', handleOutsideClick)
   }, [dispatch])
@@ -33,7 +36,10 @@ const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
             <ul className="sort-by__popup_list">
               {
                 allSorting.map(({ path, tag, type }) => {
-                  const setItemClassNames = activeSortBy.tag === tag ? 'sort-by__popup_item active' : 'sort-by__popup_item'
+                  const setItemClassNames = activeSortBy.tag === tag
+                    ? 'sort-by__popup_item active'
+                    : 'sort-by__popup_item'
+                  
                   const handleClickSortBy = () => {
                     onClickSortBy(path, tag, type)
                     setIsVisiblePopup(!isVisiblePopup)
@@ -56,6 +62,6 @@ const SortBy = React.memo(({ activeSortBy, onClickSortBy }) => {
       }
     </div>
   )
-})
+}
 
-export default SortBy
+export default memo(SortBy)

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FaShoppingBasket } from "react-icons/fa"
 
-const ButtonCart = React.memo(() => {
+const ButtonCart = () => {
   const { totalCount, totalPrice } = useSelector(({ cart }) => cart)
 
   return (
@@ -14,6 +14,6 @@ const ButtonCart = React.memo(() => {
       <span className='cart-btn__amount'>{totalCount}</span>
     </Link>
   )
-})
+}
 
-export default ButtonCart 
+export default memo(ButtonCart) 

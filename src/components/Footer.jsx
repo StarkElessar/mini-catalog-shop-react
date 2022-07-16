@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaRegCopyright } from 'react-icons/fa'
 
-export default function Footer() {
+const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -14,3 +14,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

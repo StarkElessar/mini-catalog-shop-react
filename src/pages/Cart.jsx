@@ -1,35 +1,41 @@
-import React from 'react'
+import React, { memo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaAngleLeft, FaShoppingBasket, FaTrashAlt } from "react-icons/fa"
-import { clearCart, removeCartItem, decreaseCountItems, increaseCountItems } from '../redux/actions/cart'
+import {
+  clearCart,
+  removeCartItem,
+  decreaseCountItems,
+  increaseCountItems
+} from '../redux/actions/cart'
 
 import CartEmpty from "../components/CartEmpty";
 import CartItem from "../components/CartItem";
 
-export default function Cart() {
+const Cart = () => {
   const dispatch = useDispatch()
   const { items, totalCount, totalPrice } = useSelector(({ cart }) => cart)
   const productArray = (Object.values(items).map(({ items }) => items[0])).flat()
   const currentTotalCount = (Object.values(items).map(({ items }) => items.length))
   const currentTotalPrice = (Object.values(items).map(({ totalPrice }) => totalPrice))
 
-  const dispatchClearCart = React.useCallback(() => {
+  const dispatchClearCart = useCallback(() => {
     if (window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart())
     }
   }, [dispatch])
 
-  const dispatchRemoveCartItem = React.useCallback((id) => {
+  const dispatchRemoveCartItem = useCallback((id) => {
     if (window.confirm('Вы действительно хотите удалить данный товар из корзины?')) {
       dispatch(removeCartItem(id))
     }
   }, [dispatch])
 
-  const dispatchDecCountItems = React.useCallback((id) => {
+  const dispatchDecCountItems = useCallback((id) => {
     dispatch(decreaseCountItems(id))
   }, [dispatch])
-  const dispatchIncCountItems = React.useCallback((id) => {
+
+  const dispatchIncCountItems = useCallback((id) => {
     dispatch(increaseCountItems(id))
   }, [dispatch])
 
@@ -56,12 +62,12 @@ export default function Cart() {
                     productArray.map((objectProduct, index) => (
                       <CartItem
                         key={`${objectProduct.id}_${index}`}
+                        objectProduct={objectProduct}
                         currentTotalCount={currentTotalCount[index]}
                         currentTotalPrice={currentTotalPrice[index]}
                         removeCurrentItem={dispatchRemoveCartItem}
                         incCartItem={dispatchIncCountItems}
                         decCartItem={dispatchDecCountItems}
-                        {...objectProduct}
                       />
                     ))
                   }
@@ -94,3 +100,5 @@ export default function Cart() {
     </section>
   )
 }
+
+export default memo(Cart)

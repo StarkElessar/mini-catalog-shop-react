@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo, useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCategory, setSortBy } from '../redux/actions/filters'
 import { fetchProducts } from '../redux/actions/products'
@@ -6,18 +6,19 @@ import { fetchProducts } from '../redux/actions/products'
 import NavMenu from '../components/NavMenu'
 import ProductItems from '../components/ProductItems'
 
-const Catalog = React.memo(() => {
+const Catalog = () => {
   const dispatch = useDispatch()
   const { category, sortBy } = useSelector(({ filters }) => filters)
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchProducts(category, sortBy))
   }, [category, sortBy, dispatch])
 
-  const dispatchSetCategory = React.useCallback((brand, name) => {
+  const dispatchSetCategory = useCallback((brand, name) => {
     dispatch(setCategory(brand, name))
   }, [dispatch])
-  const dispatchSetSortBy = React.useCallback((path, tag, type) => {
+
+  const dispatchSetSortBy = useCallback((path, tag, type) => {
     dispatch(setSortBy(path, tag, type))
   }, [dispatch])
 
@@ -34,6 +35,6 @@ const Catalog = React.memo(() => {
       </div>
     </section>
   )
-})
+}
 
-export default Catalog
+export default memo(Catalog)

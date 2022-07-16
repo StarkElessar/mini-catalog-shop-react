@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useCallback, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart } from '../redux/actions/cart'
 
 import ProductCard from './ProductCard'
 import CardSkeleton from './CardSkeleton'
 
-const ProductItems = React.memo(() => {
+const ProductItems = () => {
   const dispatch = useDispatch()
   const { items, isLoaded } = useSelector(({ products }) => products)
 
-  const dispatchAddItemToCart = React.useCallback((productObject) => {
+  const dispatchAddItemToCart = useCallback((productObject) => {
     dispatch(addProductToCart(productObject))
   }, [dispatch])
 
@@ -29,6 +29,6 @@ const ProductItems = React.memo(() => {
       }
     </div>
   )
-})
+}
 
-export default ProductItems
+export default memo(ProductItems)
