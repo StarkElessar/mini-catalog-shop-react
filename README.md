@@ -1,1 +1,1 @@
-# MiniReactApp: Catalog-Shop with Card
+# MiniReactApp: Catalog-Shop with Cart
